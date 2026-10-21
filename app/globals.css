@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
 }
 
 @theme inline {
@@ -12,15 +12,236 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Light Theme Embroidery Background Utilities */
+.embroidery-dots-light {
+  background-image: radial-gradient(circle, rgba(22, 163, 74, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.stitch-grid-light {
+  background-image: 
+    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.leaf-gradient {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 50%, #047857 100%);
+}
+
+.leaf-gradient-text {
+  background: linear-gradient(135deg, #15803d 0%, #16a34a 50%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===================================================
+   HERO SLIDER CUSTOM EMBROIDERY ANIMATIONS
+   =================================================== */
+
+/* 1. 3D Puff Laser Depth Scan & Relief */
+@keyframes puffLaserScan {
+  0% {
+    top: 8%;
+    opacity: 0.7;
+  }
+  50% {
+    top: 82%;
+    opacity: 1;
+  }
+  100% {
+    top: 8%;
+    opacity: 0.7;
+  }
+}
+
+.animate-puff-scan {
+  animation: puffLaserScan 4.5s ease-in-out infinite;
+}
+
+@keyframes puffSubtleFloat {
+  0%, 100% {
+    transform: scale(1.02) translateY(0);
+  }
+  50% {
+    transform: scale(1.05) translateY(-3px);
+  }
+}
+
+.animate-puff-float {
+  animation: puffSubtleFloat 6s ease-in-out infinite;
+}
+
+/* 2. Rayon & Metallic Thread Sheen Wave */
+@keyframes threadSheenSweep {
+  0% {
+    transform: translateX(-160%) skewX(-25deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  45% {
+    transform: translateX(260%) skewX(-25deg);
+    opacity: 0.85;
+  }
+  50%, 100% {
+    transform: translateX(260%) skewX(-25deg);
+    opacity: 0;
+  }
+}
+
+.animate-thread-sheen {
+  animation: threadSheenSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Golden Specular Micro-Sparkle */
+@keyframes goldenSparkle {
+  0%, 100% {
+    transform: scale(0.6) rotate(0deg);
+    opacity: 0.15;
+    filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.4));
+  }
+  50% {
+    transform: scale(1.25) rotate(45deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.95));
+  }
+}
+
+.animate-sparkle-1 {
+  animation: goldenSparkle 2.6s ease-in-out infinite;
+}
+
+.animate-sparkle-2 {
+  animation: goldenSparkle 3.1s ease-in-out 0.8s infinite;
+}
+
+.animate-sparkle-3 {
+  animation: goldenSparkle 2.9s ease-in-out 1.5s infinite;
+}
+
+/* Precision Reticle Inspection Orbit */
+@keyframes reticleOrbit {
+  0% {
+    top: 32%;
+    left: 36%;
+  }
+  25% {
+    top: 28%;
+    left: 64%;
+  }
+  50% {
+    top: 62%;
+    left: 68%;
+  }
+  75% {
+    top: 66%;
+    left: 32%;
+  }
+  100% {
+    top: 32%;
+    left: 36%;
+  }
+}
+
+.animate-reticle-orbit {
+  animation: reticleOrbit 10s ease-in-out infinite;
+}
+
+/* 3. Stitch Tracer Scanning Split & Needle Movement */
+@keyframes tracerLaserWipe {
+  0% {
+    left: 10%;
+  }
+  50% {
+    left: 88%;
+  }
+  100% {
+    left: 10%;
+  }
+}
+
+.animate-tracer-wipe {
+  animation: tracerLaserWipe 5s ease-in-out infinite;
+}
+
+@keyframes needleHeadPath {
+  0% {
+    top: 34%;
+    left: 36%;
+  }
+  20% {
+    top: 26%;
+    left: 54%;
+  }
+  40% {
+    top: 45%;
+    left: 68%;
+  }
+  60% {
+    top: 64%;
+    left: 50%;
+  }
+  80% {
+    top: 55%;
+    left: 32%;
+  }
+  100% {
+    top: 34%;
+    left: 36%;
+  }
+}
+
+.animate-needle-path {
+  animation: needleHeadPath 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes needleMicroPunch {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(2px) scale(0.92);
+  }
+}
+
+.animate-needle-punch {
+  animation: needleMicroPunch 0.15s linear infinite;
+}
+
+/* Radar ping for hotspots */
+@keyframes sonarPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.animate-sonar-pulse {
+  animation: sonarPulse 2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}
+
