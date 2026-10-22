@@ -12,5 +12,5 @@
         "statusBar.noFolderBackground": "#2E2267",
         "statusBar.noFolderForeground": "#FBFBFE"
     },
-    "workbench.colorTheme": "Default Dark+"
+    "workbench.colorTheme": "Dark+"
 }
